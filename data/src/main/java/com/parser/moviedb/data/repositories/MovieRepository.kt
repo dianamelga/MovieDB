@@ -7,6 +7,7 @@ import com.parser.moviedb.data.repositories.interfaces.IMovieRepository
 class MovieRepository(
     private val dataSource: MovieRemoteDataSource
 ) : IMovieRepository {
+
     override suspend fun getUpcomingMovies(): Result<PagedItemsResponse> {
         return dataSource.getUpcomingMovies()
     }

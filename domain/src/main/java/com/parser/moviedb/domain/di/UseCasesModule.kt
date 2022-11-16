@@ -1,5 +1,6 @@
 package com.parser.moviedb.domain.di
 
+import com.parser.moviedb.data.repositories.interfaces.IApiConfigurationRepository
 import com.parser.moviedb.data.repositories.interfaces.IMovieRepository
 import com.parser.moviedb.domain.usecases.MovieUseCase
 import com.parser.moviedb.domain.usecases.interfaces.IMovieUseCase
@@ -15,5 +16,5 @@ class UseCasesModule {
 
     @Singleton
     @Provides
-    fun provideMovieUseCase(movieRepository: IMovieRepository): IMovieUseCase = MovieUseCase(movieRepository)
+    fun provideMovieUseCase(movieRepository: IMovieRepository, apiConfigRepository: IApiConfigurationRepository): IMovieUseCase = MovieUseCase(movieRepository, apiConfigRepository)
 }

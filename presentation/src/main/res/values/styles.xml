@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="poppins_semibold">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="fontPath">font/poppins_semibold.ttf</item>
+        <item name="android:textSize">@dimen/sp_20px</item>
+        <item name="android:lineHeight">@dimen/dp_30px</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

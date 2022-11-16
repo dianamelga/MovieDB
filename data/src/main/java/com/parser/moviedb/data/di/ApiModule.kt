@@ -1,5 +1,7 @@
 package com.parser.moviedb.data.di
 
+import android.graphics.Bitmap
+import com.parser.moviedb.data.remote.apis.ConfigurationApi
 import com.parser.moviedb.data.remote.apis.MovieApi
 import dagger.Module
 import dagger.Provides
@@ -13,4 +15,7 @@ object ApiModule {
 
     @Provides
     fun provideMovieApi(retrofit: Retrofit): MovieApi = retrofit.create(MovieApi::class.java)
+
+    @Provides
+    fun provideConfigurationApi(retrofit: Retrofit): ConfigurationApi = retrofit.create(ConfigurationApi::class.java)
 }

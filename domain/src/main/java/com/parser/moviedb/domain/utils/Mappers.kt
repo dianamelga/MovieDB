@@ -5,9 +5,9 @@ import com.parser.moviedb.data.remote.models.PagedItemsResponse
 import com.parser.moviedb.domain.entities.MediaItem
 import com.parser.moviedb.domain.entities.PagedItems
 
-fun MediaItemResponse.toDomain() = MediaItem(
+fun MediaItemResponse.toDomain(imageBaseUrl: String?) = MediaItem(
     id = id,
-    posterPath = posterPath,
+    posterUrl = "${imageBaseUrl}original/${posterPath}",
     adult = adult,
     overview = overview,
     releaseDate = releaseDate,
@@ -22,9 +22,9 @@ fun MediaItemResponse.toDomain() = MediaItem(
     voteAverage = voteAverage
 )
 
-fun PagedItemsResponse.toDomain() = PagedItems(
+fun PagedItemsResponse.toDomain(imageBaseUrl: String?) = PagedItems(
     page = page,
-    results = results.map { it.toDomain() },
+    results = results.map { it.toDomain(imageBaseUrl) },
     totalResults = totalResults,
     totalPages = totalPages
 )

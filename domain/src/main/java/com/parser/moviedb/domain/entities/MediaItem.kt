@@ -2,7 +2,7 @@ package com.parser.moviedb.domain.entities
 
 data class MediaItem(
     val id: Int,
-    val posterPath: String? = null,
+    val posterUrl: String? = null,
     val adult: Boolean,
     val overview: String,
     val releaseDate: String,
@@ -15,4 +15,23 @@ data class MediaItem(
     val voteCount: Int,
     val video: Boolean,
     val voteAverage: Float
-)
+) {
+    companion object {
+        fun dummy() = MediaItem(
+            id = 0,
+            posterUrl = "",
+            adult = false,
+            overview = "",
+            releaseDate = "",
+            genreIds = emptyList(),
+            originalTitle = "",
+            originalLanguage = "",
+            title = "",
+            backdropPath = "",
+            popularity = 0f,
+            voteCount = 0,
+            video = false,
+            voteAverage = 0f
+        )
+    }
+}

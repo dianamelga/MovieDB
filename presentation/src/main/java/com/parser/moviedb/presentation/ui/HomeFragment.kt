@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.parser.moviedb.domain.entities.MediaItem
 import com.parser.moviedb.presentation.R
 import com.parser.moviedb.presentation.databinding.FragmentHomeBinding
+import com.parser.moviedb.presentation.ui.adapters.MediaItemWrapper
+import com.parser.moviedb.presentation.ui.adapters.MovieItemAdapter
 import com.parser.moviedb.presentation.ui.base.BaseFragment
 import com.parser.moviedb.presentation.viewmodels.HomeViewModel
 import com.parser.moviedb.presentation.viewmodels.HomeViewState
@@ -21,6 +24,10 @@ class HomeFragment : BaseFragment() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
 
+    private val upcomingAdapter by lazy { MovieItemAdapter() }
+    private val topRatedAdapter by lazy { MovieItemAdapter() }
+    private val recommendedAdapter by lazy { MovieItemAdapter() }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,21 +39,44 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.rvUpcoming.adapter = upcomingAdapter
+        binding.rvTopRated.adapter = topRatedAdapter
+        binding.rvRecommended.adapter = recommendedAdapter
+
         viewModel.viewState.observe(viewLifecycleOwner) {
             when(it) {
                 is HomeViewState.LoadData.Failure -> {
 
                 }
                 HomeViewState.LoadData.Processing -> {
-
+                    loadingState()
                 }
                 is HomeViewState.LoadData.Success -> {
-
+                    clearLoadingState()
+                    upcomingAdapter.submitList(it.upcomingMovies.map { MediaItemWrapper(it, MovieItemAdapter.ViewType.MOVIE_ITEM_CARD) })
+                    topRatedAdapter.submitList(it.topRatedMovies.map { MediaItemWrapper(it, MovieItemAdapter.ViewType.MOVIE_ITEM_CARD) })
+                    recommendedAdapter.submitList(it.recommendedMovies.map { MediaItemWrapper(it, MovieItemAdapter.ViewType.MOVIE_ITEM_RECOMMENDED_CARD) })
                 }
             }
         }
 
         viewModel.loadData()
+    }
+
+    private fun clearLoadingState() {
+        upcomingAdapter.submitList(null)
+        topRatedAdapter.submitList(null)
+        recommendedAdapter.submitList(null)
+    }
+
+    private fun loadingState() {
+        val loadingList = ArrayList<MediaItemWrapper>()
+        for (i in 0..5) {
+            loadingList.add(MediaItemWrapper(MediaItem.dummy(), MovieItemAdapter.ViewType.MOVIE_ITEM_CARD))
+        }
+        upcomingAdapter.submitList(loadingList)
+        topRatedAdapter.submitList(loadingList)
+        recommendedAdapter.submitList(loadingList.map { it.viewType = MovieItemAdapter.ViewType.MOVIE_ITEM_RECOMMENDED_CARD; it })
     }
 
     companion object {
