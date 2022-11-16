@@ -13,9 +13,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel(
+class HomeViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val movieUseCase: IMovieUseCase
 ) : ViewModel() {

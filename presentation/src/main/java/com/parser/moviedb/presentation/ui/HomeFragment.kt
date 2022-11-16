@@ -9,11 +9,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.parser.moviedb.presentation.R
 import com.parser.moviedb.presentation.databinding.FragmentHomeBinding
+import com.parser.moviedb.presentation.ui.base.BaseFragment
 import com.parser.moviedb.presentation.viewmodels.HomeViewModel
 import com.parser.moviedb.presentation.viewmodels.HomeViewState
 import com.parser.moviedb.presentation.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private val rootViewModel: MainViewModel by activityViewModels()
     private val viewModel: HomeViewModel by viewModels()
@@ -32,9 +34,15 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.viewState.observe(viewLifecycleOwner) {
             when(it) {
-                is HomeViewState.LoadData.Failure -> TODO()
-                HomeViewState.LoadData.Processing -> TODO()
-                is HomeViewState.LoadData.Success -> TODO()
+                is HomeViewState.LoadData.Failure -> {
+
+                }
+                HomeViewState.LoadData.Processing -> {
+
+                }
+                is HomeViewState.LoadData.Success -> {
+
+                }
             }
         }
 
@@ -42,6 +50,7 @@ class HomeFragment : Fragment() {
     }
 
     companion object {
+        val TAG = HomeFragment::class.java.simpleName
         @JvmStatic
         fun newInstance() = HomeFragment()
     }

@@ -1,7 +1,7 @@
 package com.parser.moviedb.data.di
 
 import android.content.Context
-import androidx.multidex.BuildConfig
+import com.parser.moviedb.data.BuildConfig
 import com.parser.moviedb.data.remote.apis.CACHE_SIZE
 import com.parser.moviedb.data.remote.apis.TIMEOUT_SECONDS
 import com.parser.moviedb.data.remote.interceptors.ApiInterceptor

@@ -24,8 +24,12 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
         }
     }
     compileOptions {
@@ -53,10 +57,14 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$test_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$test_espresso_core"
 
-    //HILT
+    // HILT
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_compiler_version"
     implementation "androidx.multidex:multidex:$multidex_version"
+
+    // UI
+    implementation "io.github.inflationx:calligraphy3:$calligraphy_version"
+    implementation "io.github.inflationx:viewpump:$viewpump_version"
 
     implementation"androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_runtime_version"

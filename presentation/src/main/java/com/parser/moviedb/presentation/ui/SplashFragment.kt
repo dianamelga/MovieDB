@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.parser.moviedb.presentation.databinding.FragmentSplashBinding
+import com.parser.moviedb.presentation.ui.base.BaseFragment
 import com.parser.moviedb.presentation.viewmodels.MainViewModel
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSplashBinding
     private val rootViewModel: MainViewModel by activityViewModels()

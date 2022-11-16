@@ -9,9 +9,12 @@ interface MovieApi {
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(
+        @Query("api_key") apiKey: String = API_KEY,
         @Query("language") language: String? = null
     ): Response<PagedItemsResponse>
 
     @GET("movie/upcoming")
-    suspend fun getUpcomingMovies(): Response<PagedItemsResponse>
+    suspend fun getUpcomingMovies(
+        @Query("api_key") apiKey: String = API_KEY
+    ): Response<PagedItemsResponse>
 }

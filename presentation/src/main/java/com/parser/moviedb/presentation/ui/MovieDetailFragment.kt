@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.parser.moviedb.presentation.R
 import com.parser.moviedb.presentation.databinding.FragmentMovieDetailBinding
+import com.parser.moviedb.presentation.ui.base.BaseFragment
 import com.parser.moviedb.presentation.viewmodels.MovieDetailViewModel
 
-class MovieDetailFragment : Fragment() {
+class MovieDetailFragment : BaseFragment() {
     private val viewModel: MovieDetailViewModel by viewModels()
     private lateinit var binding: FragmentMovieDetailBinding
 
@@ -24,6 +25,7 @@ class MovieDetailFragment : Fragment() {
     }
 
     companion object {
+        val TAG = MovieDetailFragment::class.java.simpleName
         @JvmStatic
         fun newInstance() = MovieDetailFragment()
     }

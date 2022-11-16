@@ -1,7 +1,5 @@
 package com.parser.moviedb.domain.entities
 
-import com.parser.moviedb.data.remote.models.responses.MediaItemResponse
-
 data class MediaItem(
     val id: Int,
     val posterPath: String? = null,
