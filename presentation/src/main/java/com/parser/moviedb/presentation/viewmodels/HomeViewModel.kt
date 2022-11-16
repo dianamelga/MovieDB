@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.parser.moviedb.domain.entities.MediaItem
 import com.parser.moviedb.domain.usecases.interfaces.IMovieUseCase
 import com.parser.moviedb.presentation.R
+import com.parser.moviedb.presentation.ui.adapters.MovieFilter
+import com.parser.moviedb.presentation.ui.adapters.MovieFilterType
 import com.parser.moviedb.presentation.utils.readOnly
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -23,6 +25,8 @@ class HomeViewModel @Inject constructor(
     private val _viewState = MutableLiveData<HomeViewState>()
     val viewState = _viewState.readOnly
 
+    private var currentFilter = HashMap<MovieFilterType, String?>()
+
     fun loadData() {
         _viewState.value = HomeViewState.LoadData.Processing
         viewModelScope.launch {
@@ -35,9 +39,27 @@ class HomeViewModel @Inject constructor(
                     upcomingMovies = upcMov.getOrNull()?.results ?: emptyList(),
                     topRatedMovies = topRatedMov.getOrNull()?.results ?: emptyList(),
                     recommendedMovies = upcMov.getOrNull()?.results?.take(6) ?: emptyList(),
+                    filters = listOf(
+                        MovieFilter("in Spanish", MovieFilterType.LANGUAGE,  filterValue = "es"),
+                        MovieFilter("Released in 1993", MovieFilterType.YEAR_OF_RELEASE, filterValue = "1993")
+                    )
                 )
             } else {
                 _viewState.value = HomeViewState.LoadData.Failure(Exception(context.getString(R.string.error_retrieving_data)))
+            }
+        }
+    }
+
+    fun filterRecommendedMovies(filter: MovieFilter) {
+        _viewState.value = HomeViewState.FilterRecommendedMovies.Processing
+        currentFilter[filter.type] = filter.filterValue
+
+        viewModelScope.launch {
+            val response = movieUseCase.getRecommendedMovies(language = currentFilter[MovieFilterType.LANGUAGE], yearOfRelease = currentFilter[MovieFilterType.YEAR_OF_RELEASE]?.toInt())
+            if (response.isSuccess) {
+                _viewState.value = HomeViewState.FilterRecommendedMovies.Success(response.getOrNull()?.results?.take(6) ?: emptyList())
+            } else {
+                _viewState.value = HomeViewState.FilterRecommendedMovies.Failure(response.exceptionOrNull() ?: Exception("Error filtering"))
             }
         }
     }
@@ -49,8 +71,17 @@ sealed class HomeViewState {
         data class Success(
             val upcomingMovies: List<MediaItem>,
             val topRatedMovies: List<MediaItem>,
-            val recommendedMovies: List<MediaItem>
+            val recommendedMovies: List<MediaItem>,
+            val filters: List<MovieFilter>
             ) : LoadData()
         data class Failure(val error: Throwable) : LoadData()
+    }
+
+    sealed class FilterRecommendedMovies : HomeViewState() {
+        object Processing : FilterRecommendedMovies()
+        data class Success(
+            val recommendedMoviesFiltered: List<MediaItem>
+        ) : FilterRecommendedMovies()
+        data class Failure(val error: Throwable) : FilterRecommendedMovies()
     }
 }

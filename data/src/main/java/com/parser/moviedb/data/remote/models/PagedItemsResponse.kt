@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class PagedItemsResponse(
     val page: Int,
-    val results: List<MediaItemResponse>,
+    var results: List<MediaItemResponse>,
     @SerializedName("total_results")
     val totalResults: Int,
     @SerializedName("total_pages")

@@ -3,6 +3,8 @@ package com.parser.moviedb.data.remote.datasources
 import com.parser.moviedb.data.remote.apis.MovieApi
 import com.parser.moviedb.data.remote.datasources.interfaces.MovieRemoteDataSource
 import com.parser.moviedb.data.remote.models.PagedItemsResponse
+import com.parser.moviedb.data.utils.toISO8601Date
+import java.util.Calendar
 
 class MovieDataSource(
     private val movieApi: MovieApi
@@ -27,8 +29,22 @@ class MovieDataSource(
         return try {
             val response = movieApi.getTopRatedMovies(language = language)
             if (response.isSuccessful) {
-                // TODO: filter by year of release
-                Result.success(response.body()!!)
+                val data = response.body()!!
+                val moviesFiltered = if (yearOfRelease != null) {
+                    data.results.filter {
+                        val calendar: Calendar? = it.releaseDate.toISO8601Date()?.let { date ->
+                            Calendar.getInstance().also { c ->
+                                c.time = date
+                            }
+                        } ?: run { null }
+
+                        (calendar?.get(Calendar.YEAR) ?: 0) == yearOfRelease
+                    }
+                } else {
+                    data.results
+                }
+                data.results = moviesFiltered
+                Result.success(data)
             } else {
                 Result.failure(Exception(response.errorBody()?.toString()))
             }

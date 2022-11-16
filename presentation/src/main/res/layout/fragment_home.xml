@@ -89,6 +89,21 @@
                 android:layout_marginTop="@dimen/dp_18px"
                 android:layout_marginStart="@dimen/dp_25px"/>
 
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommended_filters"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginHorizontal="@dimen/dp_24px"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recommended"
+                android:layout_marginTop="@dimen/dp_12px"
+                tools:itemCount="2"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/chip_view"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_recommended"
                 android:layout_width="wrap_content"
@@ -101,9 +116,9 @@
                 tools:listitem="@layout/movie_item_recommended"
                 tools:itemCount="6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_recommended"
+                app:layout_constraintTop_toBottomOf="@id/rv_recommended_filters"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/dp_20px"/>
+                android:layout_marginTop="@dimen/dp_24px"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

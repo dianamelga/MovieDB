@@ -34,7 +34,7 @@ class MovieUseCase(
     override suspend fun getRecommendedMovies(language: String?, yearOfRelease: Int?): Result<PagedItems> {
         setImageBaseUrl()
 
-        val response = movieRepository.getTopRatedMovies(language = DEFAULT_LANGUAGE, yearOfRelease = yearOfRelease).getOrElse { exception ->
+        val response = movieRepository.getTopRatedMovies(language = language ?: DEFAULT_LANGUAGE, yearOfRelease = yearOfRelease).getOrElse { exception ->
             return Result.failure(exception)
         }.toDomain(imageBaseUrl)
         return Result.success(response)

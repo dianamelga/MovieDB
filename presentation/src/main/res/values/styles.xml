@@ -8,4 +8,13 @@
         <item name="android:textFontWeight">600</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="poppins_medium">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="fontPath">font/poppins_medium.ttf</item>
+        <item name="android:textSize">@dimen/sp_12px</item>
+        <item name="android:lineHeight">@dimen/dp_18px</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
