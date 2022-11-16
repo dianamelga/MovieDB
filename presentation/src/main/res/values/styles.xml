@@ -17,4 +17,13 @@
         <item name="android:textFontWeight">500</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="poppins_regular">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="fontPath">font/poppins_regular.ttf</item>
+        <item name="android:textSize">@dimen/sp_12px</item>
+        <item name="android:lineHeight">@dimen/dp_18px</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 </resources>

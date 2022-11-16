@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.parser.moviedb.presentation.R
+import com.parser.moviedb.presentation.ui.MovieDetailFragment.Companion.MEDIA_ITEM
 import com.parser.moviedb.presentation.utils.addFragmentToActivity
 import com.parser.moviedb.presentation.viewmodels.MainViewModel
 import com.parser.moviedb.presentation.viewmodels.NavigationState
@@ -29,9 +30,14 @@ class MainActivity : AppCompatActivity() {
                         false
                     )
                 }
-                NavigationState.MovieDetailScreen -> {
+                is NavigationState.MovieDetailScreen -> {
+                    val args = Bundle().also { b ->
+                        b.putParcelable(MEDIA_ITEM, it.mediaItem)
+                    }
                     addFragmentToActivity(
-                        MovieDetailFragment.newInstance(),
+                        MovieDetailFragment.newInstance().also {
+                            it.arguments = args
+                        },
                         R.id.root,
                         MovieDetailFragment.TAG,
                         false

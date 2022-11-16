@@ -1,5 +1,9 @@
 package com.parser.moviedb.domain.entities
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MediaItem(
     val id: Int,
     val posterUrl: String? = null,
@@ -15,7 +19,7 @@ data class MediaItem(
     val voteCount: Int,
     val video: Boolean,
     val voteAverage: Float
-) {
+) : Parcelable {
     companion object {
         fun dummy() = MediaItem(
             id = 0,

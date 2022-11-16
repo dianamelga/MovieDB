@@ -26,9 +26,21 @@ class HomeFragment : BaseFragment() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
 
-    private val upcomingAdapter by lazy { MovieItemAdapter() }
-    private val topRatedAdapter by lazy { MovieItemAdapter() }
-    private val recommendedAdapter by lazy { MovieItemAdapter() }
+    private val upcomingAdapter by lazy {
+        MovieItemAdapter {
+            rootViewModel.goToMovieDetail(it)
+        }
+    }
+    private val topRatedAdapter by lazy {
+        MovieItemAdapter {
+            rootViewModel.goToMovieDetail(it)
+        }
+    }
+    private val recommendedAdapter by lazy {
+        MovieItemAdapter {
+            rootViewModel.goToMovieDetail(it)
+        }
+    }
 
     private val movieFilterAdapter by lazy {
         MovieFilterAdapter(requireActivity()) { filter ->

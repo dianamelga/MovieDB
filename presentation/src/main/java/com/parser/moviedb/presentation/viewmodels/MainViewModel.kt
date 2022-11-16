@@ -2,6 +2,7 @@ package com.parser.moviedb.presentation.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.parser.moviedb.domain.entities.MediaItem
 import com.parser.moviedb.presentation.utils.readOnly
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,8 +16,8 @@ class MainViewModel @Inject constructor() : ViewModel() {
         _navigationState.value = NavigationState.HomeScreen
     }
 
-    fun goToMovieDetail() {
-        _navigationState.value = NavigationState.MovieDetailScreen
+    fun goToMovieDetail(mediaItem: MediaItem) {
+        _navigationState.value = NavigationState.MovieDetailScreen(mediaItem)
     }
 }
 
@@ -28,5 +29,5 @@ class MainViewModel @Inject constructor() : ViewModel() {
  */
 sealed class NavigationState {
     object HomeScreen : NavigationState()
-    object MovieDetailScreen : NavigationState()
+    data class MovieDetailScreen(val mediaItem: MediaItem) : NavigationState()
 }

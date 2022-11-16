@@ -12,7 +12,7 @@ import com.parser.moviedb.presentation.databinding.MovieItemRecommendedBinding
 
 data class MediaItemWrapper(val item: MediaItem, var viewType: MovieItemAdapter.ViewType)
 
-class MovieItemAdapter : ListAdapter<MediaItemWrapper, MovieItemAdapter.ViewHolder>(diffCallback) {
+class MovieItemAdapter(private val onClick:(MediaItem) -> Unit) : ListAdapter<MediaItemWrapper, MovieItemAdapter.ViewHolder>(diffCallback) {
 
     companion object {
         val diffCallback = object : DiffUtil.ItemCallback<MediaItemWrapper>() {
@@ -39,6 +39,10 @@ class MovieItemAdapter : ListAdapter<MediaItemWrapper, MovieItemAdapter.ViewHold
             }
             if (binding is MovieItemRecommendedBinding) {
                 binding.imageUrl = movie.item.posterUrl
+            }
+
+            binding.root.setOnClickListener {
+                onClick.invoke(movie.item)
             }
         }
     }

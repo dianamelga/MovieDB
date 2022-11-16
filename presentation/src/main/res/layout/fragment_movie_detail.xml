@@ -1,8 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MovieDetailFragment">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</FrameLayout>
+    <data>
+
+        <variable
+            name="mediaItem"
+            type="com.parser.moviedb.domain.entities.MediaItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MovieDetailFragment"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/iv_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{mediaItem.posterUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Her"
+                    android:text="@{mediaItem.title}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/dp_633px"
+                    style="@style/poppins_semibold"
+                    android:textSize="@dimen/sp_40px" />
+
+
+                <include
+                    android:id="@+id/incl_year_release"
+                    layout="@layout/square_view"
+                    android:layout_height="@dimend/dp_28px"
+                    android:layout_width="@dimen/dp_42px"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    android:layout_marginTop="@dimen/dp_16px"/>
+
+                <include
+                    android:id="@+id/incl_language"
+                    layout="@layout/square_view"
+                    android:layout_height="@dimend/dp_28px"
+                    android:layout_width="@dimen/dp_32px"
+                    app:layout_constraintStart_toEndOf="@id/incl_year_release"
+                    android:layout_marginStart="@dimen/dp_8px"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    android:layout_marginTop="@dimen/dp_16px"/>
+
+                <include
+                    android:id="@+id/incl_rate"
+                    layout="@layout/square_view"
+                    android:layout_height="@dimend/dp_28px"
+                    android:layout_width="@dimen/dp_58px"
+                    app:layout_constraintStart_toEndOf="@id/incl_language"
+                    android:layout_marginStart="@dimen/dp_8px"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    android:layout_marginTop="@dimen/dp_16px"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
