@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-android'
@@ -11,13 +11,11 @@ android {
     compileSdk rootProject.ext.compile_sdk_version
 
     defaultConfig {
-        applicationId "com.parser.moviedb"
         minSdk rootProject.ext.min_sdk_version
         targetSdk rootProject.ext.target_sdk_version
-        versionCode rootProject.ext.version_code
-        versionName rootProject.ext.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -50,4 +48,9 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_compiler_version"
     implementation "androidx.multidex:multidex:$multidex_version"
 
+    //Retrofit
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_converter_gson"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_logging_interceptor"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3"
 }
