@@ -1,7 +1,7 @@
 package com.parser.moviedb.domain.utils
 
-import com.parser.moviedb.data.remote.models.responses.MediaItemResponse
-import com.parser.moviedb.data.remote.models.responses.PagedItemsResponse
+import com.parser.moviedb.data.remote.models.MediaItemResponse
+import com.parser.moviedb.data.remote.models.PagedItemsResponse
 import com.parser.moviedb.domain.entities.MediaItem
 import com.parser.moviedb.domain.entities.PagedItems
 
