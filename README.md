@@ -11,6 +11,9 @@ Support: Android 9 (API level 28) and above
 * [Lottie](https://github.com/airbnb/lottie-android) // Animations
 * [Glide](https://github.com/bumptech/glide) //Image handler
 
+### Interview Questions:
+* [Q&A in spanish](https://github.com/dianamelga/MovieDB/blob/main/readme.txt)
+
 
 ### The architecture overview:
 
