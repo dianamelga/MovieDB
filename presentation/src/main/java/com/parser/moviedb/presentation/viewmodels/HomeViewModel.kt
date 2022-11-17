@@ -38,7 +38,7 @@ class HomeViewModel @Inject constructor(
                 _viewState.value = HomeViewState.LoadData.Success(
                     upcomingMovies = upcMov.getOrNull()?.results ?: emptyList(),
                     topRatedMovies = topRatedMov.getOrNull()?.results ?: emptyList(),
-                    recommendedMovies = upcMov.getOrNull()?.results?.take(6) ?: emptyList(),
+                    recommendedMovies = topRatedMov.getOrNull()?.results?.take(6) ?: emptyList(),
                     filters = listOf(
                         MovieFilter("in Spanish", MovieFilterType.LANGUAGE,  filterValue = "es"),
                         MovieFilter("Released in 1993", MovieFilterType.YEAR_OF_RELEASE, filterValue = "1993")

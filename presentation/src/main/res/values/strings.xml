@@ -5,4 +5,6 @@
     <string name="recommended">Recommended for you</string>
     <string name="watch_trailer">Watch trailer</string>
     <string name="fake_text">MOVIE PLOT\nIn a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

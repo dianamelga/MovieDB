@@ -19,6 +19,10 @@ class MainViewModel @Inject constructor() : ViewModel() {
     fun goToMovieDetail(mediaItem: MediaItem) {
         _navigationState.value = NavigationState.MovieDetailScreen(mediaItem)
     }
+
+    fun openVideoPlayer(youtubeId: String) {
+        _navigationState.value = NavigationState.VideoPlayerScreen(youtubeId)
+    }
 }
 
 /**
@@ -30,4 +34,5 @@ class MainViewModel @Inject constructor() : ViewModel() {
 sealed class NavigationState {
     object HomeScreen : NavigationState()
     data class MovieDetailScreen(val mediaItem: MediaItem) : NavigationState()
+    data class VideoPlayerScreen(val youtubeId: String) : NavigationState()
 }

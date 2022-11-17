@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.parser.moviedb.presentation">
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 
         <application>
             <activity
@@ -10,6 +15,11 @@
                     <action android:name="android.intent.action.MAIN" />
                     <category android:name="android.intent.category.LAUNCHER" />
                 </intent-filter>
+            </activity>
+
+            <activity
+                android:name="com.parser.moviedb.presentation.ui.VideoPlayerActivity"
+                android:exported="true">
             </activity>
         </application>
 </manifest>

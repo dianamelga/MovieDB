@@ -1,6 +1,7 @@
 package com.parser.moviedb.data.repositories
 
 import com.parser.moviedb.data.remote.datasources.interfaces.MovieRemoteDataSource
+import com.parser.moviedb.data.remote.models.MovieVideosResponse
 import com.parser.moviedb.data.remote.models.PagedItemsResponse
 import com.parser.moviedb.data.repositories.interfaces.IMovieRepository
 
@@ -17,5 +18,9 @@ class MovieRepository(
         yearOfRelease: Int?
     ): Result<PagedItemsResponse> {
         return dataSource.getTopRatedMovies(language, yearOfRelease)
+    }
+
+    override suspend fun getVideosFromMovie(movieId: Int): Result<MovieVideosResponse> {
+        return dataSource.getVideosFromMovie(movieId)
     }
 }

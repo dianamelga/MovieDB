@@ -5,6 +5,7 @@ import com.parser.moviedb.data.repositories.interfaces.IApiConfigurationReposito
 import com.parser.moviedb.data.repositories.interfaces.IMovieGenresRepository
 import com.parser.moviedb.data.repositories.interfaces.IMovieRepository
 import com.parser.moviedb.domain.entities.MovieGenre
+import com.parser.moviedb.domain.entities.MovieVideo
 import com.parser.moviedb.domain.entities.PagedItems
 import com.parser.moviedb.domain.usecases.interfaces.IMovieUseCase
 import com.parser.moviedb.domain.utils.toDomain
@@ -45,6 +46,15 @@ class MovieUseCase(
             return Result.failure(exception)
         }.toDomain(imageBaseUrl, movieGenres)
         return Result.success(response)
+    }
+
+    override suspend fun getMovieVideos(movieId: Int, language: String?): Result<List<MovieVideo>> {
+
+        val response = movieRepository.getVideosFromMovie(movieId).getOrElse { exception ->
+            return Result.failure(exception)
+        }
+        val domainResponse = response.results.map { it.toDomain(response.id) }
+        return Result.success(domainResponse)
     }
 
     private suspend fun setImageBaseUrl() {

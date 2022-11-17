@@ -2,6 +2,7 @@ package com.parser.moviedb.data.remote.datasources
 
 import com.parser.moviedb.data.remote.apis.MovieApi
 import com.parser.moviedb.data.remote.datasources.interfaces.MovieRemoteDataSource
+import com.parser.moviedb.data.remote.models.MovieVideosResponse
 import com.parser.moviedb.data.remote.models.PagedItemsResponse
 import com.parser.moviedb.data.utils.toISO8601Date
 import java.util.Calendar
@@ -45,6 +46,19 @@ class MovieDataSource(
                 }
                 data.results = moviesFiltered
                 Result.success(data)
+            } else {
+                Result.failure(Exception(response.errorBody()?.toString()))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun getVideosFromMovie(movieId: Int): Result<MovieVideosResponse> {
+        return try {
+            val response = movieApi.getVideosFromMovie(movieId)
+            if (response.isSuccessful) {
+                Result.success(response.body()!!)
             } else {
                 Result.failure(Exception(response.errorBody()?.toString()))
             }

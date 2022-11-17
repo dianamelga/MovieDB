@@ -20,6 +20,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        buildConfigField 'String', 'YOUTUBE_API_KEY', "\"AIzaSyC-k5rRSqmkVLuP3RTQqYLGLzTV6oqaPOc\""
     }
 
     buildTypes {
@@ -75,11 +76,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_runtime_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_runtime_version"
 
-    // EXOPLAYER
-    implementation "com.google.android.exoplayer:exoplayer:$exoplayer_version"
-    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
-    implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayer_version"
-    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+    implementation files("libs/YouTubeAndroidPlayerApi.jar")
 
     implementation project(':domain')
 }

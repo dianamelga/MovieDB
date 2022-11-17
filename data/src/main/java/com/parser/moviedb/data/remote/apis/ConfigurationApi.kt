@@ -1,5 +1,6 @@
 package com.parser.moviedb.data.remote.apis
 
+import com.parser.moviedb.data.BuildConfig
 import com.parser.moviedb.data.remote.models.ApiConfigurationResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -9,6 +10,6 @@ interface ConfigurationApi {
 
     @GET("configuration")
     suspend fun getApiConfiguration(
-        @Query("api_key") apiKey: String = API_KEY
+        @Query("api_key") apiKey: String = BuildConfig.API_KEY
     ): Response<ApiConfigurationResponse>
 }

@@ -2,9 +2,11 @@ package com.parser.moviedb.domain.utils
 
 import com.parser.moviedb.data.remote.models.GenreItemResponse
 import com.parser.moviedb.data.remote.models.MediaItemResponse
+import com.parser.moviedb.data.remote.models.MovieVideoResponse
 import com.parser.moviedb.data.remote.models.PagedItemsResponse
 import com.parser.moviedb.domain.entities.MediaItem
 import com.parser.moviedb.domain.entities.MovieGenre
+import com.parser.moviedb.domain.entities.MovieVideo
 import com.parser.moviedb.domain.entities.PagedItems
 
 fun MediaItemResponse.toDomain(imageBaseUrl: String?, genres: List<MovieGenre>) = MediaItem(
@@ -34,4 +36,16 @@ fun PagedItemsResponse.toDomain(imageBaseUrl: String?, genres: List<MovieGenre>)
 fun GenreItemResponse.toDomain() = MovieGenre(
     id = id,
     name = name
+)
+
+fun MovieVideoResponse.toDomain(movieId: Int) = MovieVideo(
+    movieId = movieId,
+    language = language,
+    name = name,
+    key = key,
+    site = site,
+    type = type,
+    official = official,
+    publishedAt = publishedAt,
+    id = id
 )

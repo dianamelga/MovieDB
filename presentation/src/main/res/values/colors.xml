@@ -3,4 +3,5 @@
 
     <color name="background">#1A1818</color>
     <color name="yellow">#F6C700</color>
+    <color name="grey_transparent">#43515F</color>
 </resources>

@@ -3,7 +3,6 @@ package com.parser.moviedb.data.remote.interceptors
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import com.parser.moviedb.data.remote.apis.API_KEY
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.Interceptor
 import okhttp3.Response

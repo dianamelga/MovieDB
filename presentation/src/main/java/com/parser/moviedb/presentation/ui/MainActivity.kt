@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.parser.moviedb.presentation.R
 import com.parser.moviedb.presentation.ui.MovieDetailFragment.Companion.MEDIA_ITEM
+import com.parser.moviedb.presentation.ui.VideoPlayerActivity.Companion.YOUTUBE_ID
 import com.parser.moviedb.presentation.utils.addFragmentToActivity
+import com.parser.moviedb.presentation.utils.nextActivity
 import com.parser.moviedb.presentation.viewmodels.MainViewModel
 import com.parser.moviedb.presentation.viewmodels.NavigationState
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +43,13 @@ class MainActivity : AppCompatActivity() {
                         R.id.root,
                         MovieDetailFragment.TAG,
                         true
+                    )
+                }
+                is NavigationState.VideoPlayerScreen -> {
+                    nextActivity(
+                        VideoPlayerActivity::class.java,
+                        extras = Bundle().also { b -> b.putString(YOUTUBE_ID, it.youtubeId)},
+                        finishCurrent = false
                     )
                 }
             }
