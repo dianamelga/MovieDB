@@ -20,7 +20,7 @@ Support: Android 9 (API level 28) and above
 <img width="852" alt="image" src="https://user-images.githubusercontent.com/24572020/202464407-a8fbc899-c60d-4612-9690-8fa6d7a4621a.png">
 
 ### Screenshots
-<img width="440" alt="Screen Shot 2022-11-17 at 10 59 34" src="https://user-images.githubusercontent.com/24572020/202466311-d2ab2042-fb7a-4b41-a1c1-68ba2964c88c.png">
+<img width="438" alt="image" src="https://user-images.githubusercontent.com/24572020/202551180-918d2d8b-3416-48a9-9fb1-f0b67cdc3650.png">
 <img width="446" alt="Screen Shot 2022-11-17 at 10 59 54" src="https://user-images.githubusercontent.com/24572020/202466325-4a8aad9d-0260-4487-b0e5-19011ccd701b.png">
 <img width="448" alt="Screen Shot 2022-11-17 at 11 00 06" src="https://user-images.githubusercontent.com/24572020/202466332-bda051d4-625f-4906-b2f2-8d4a2758af47.png">
 <img width="456" alt="Screen Shot 2022-11-17 at 11 00 53" src="https://user-images.githubusercontent.com/24572020/202466336-48f578a3-ceb2-44f5-8c0e-e023fa4b6c63.png">
