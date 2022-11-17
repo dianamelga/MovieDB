@@ -4,7 +4,7 @@ A challenge from Parser for Android
 Support: Android 9 (API level 28) and above
 
 ### Libraries:
-* [Corutines](https://developer.android.com/kotlin/coroutines?gclid=Cj0KCQiA1NebBhDDARIsAANiDD2B00lMELY_y9xZpM0VLC097B1EmglbXfav9r2jO2uckqGVBP-cwoIaAnXvEALw_wcB&gclsrc=aw.ds) // Threading
+* [Coroutines](https://developer.android.com/kotlin/coroutines?gclid=Cj0KCQiA1NebBhDDARIsAANiDD2B00lMELY_y9xZpM0VLC097B1EmglbXfav9r2jO2uckqGVBP-cwoIaAnXvEALw_wcB&gclsrc=aw.ds) // Threading
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) // Lifecycle
 * [Youtube API](https://developers.google.com/youtube/android/player?hl=es) // Video player
 * [Retrofit](https://square.github.io/retrofit/) // Networking
