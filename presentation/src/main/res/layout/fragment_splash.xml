@@ -15,6 +15,7 @@
         />
 
     <ImageView
+        android:id="@+id/iv_emovie"
         android:layout_width="@dimen/dp_144px"
         android:layout_height="@dimen/dp_54px"
         android:src="@drawable/emovie_logo"
@@ -22,5 +23,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/popcorn"
+        android:layout_width="@dimen/dp_150px"
+        android:layout_height="@dimen/dp_150px"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/popcorn"
+        android:layout_marginTop="@dimen/dp_50px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_emovie"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

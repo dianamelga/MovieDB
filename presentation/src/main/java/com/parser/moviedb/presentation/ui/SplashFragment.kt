@@ -32,7 +32,7 @@ class SplashFragment : BaseFragment() {
             {
                 rootViewModel.goToHome()
             },
-            2000
+            3000
         )
     }
 

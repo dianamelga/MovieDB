@@ -22,7 +22,7 @@ class MovieDetailViewModel @Inject constructor(
         viewModelScope.launch {
             val response = movieUseCase.getMovieVideos(movieId, language)
             if (response.isSuccess) {
-                val youtubeId = response.getOrNull()?.first {
+                val youtubeId = response.getOrNull()?.firstOrNull() {
                     it.site.equals("youtube", true) &&
                         it.type.equals("trailer", true) &&
                         it.official
