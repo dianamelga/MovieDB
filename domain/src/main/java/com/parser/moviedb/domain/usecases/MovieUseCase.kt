@@ -62,7 +62,7 @@ class MovieUseCase(
     }
 
     private suspend fun getMovieGenres() {
-        if (movieGenres.isNotEmpty()) {
+        if (movieGenres.isEmpty()) {
             movieGenresRepository.getMovieGenres().getOrNull()?.genres?.map { it.toDomain() }?.let {
                 if (it.isNotEmpty()) movieGenres.addAll(it)
             }
