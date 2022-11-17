@@ -75,5 +75,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_runtime_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_runtime_version"
 
+    // EXOPLAYER
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+
     implementation project(':domain')
 }
