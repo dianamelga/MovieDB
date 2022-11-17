@@ -2,9 +2,12 @@ package com.parser.moviedb.data.di
 
 import com.parser.moviedb.data.remote.apis.ConfigurationApi
 import com.parser.moviedb.data.remote.apis.MovieApi
+import com.parser.moviedb.data.remote.apis.MovieGenresApi
 import com.parser.moviedb.data.remote.datasources.ApiConfigurationDataSource
 import com.parser.moviedb.data.remote.datasources.MovieDataSource
+import com.parser.moviedb.data.remote.datasources.MovieGenresDataSource
 import com.parser.moviedb.data.remote.datasources.interfaces.ApiConfigurationRemoteDataSource
+import com.parser.moviedb.data.remote.datasources.interfaces.MovieGenresRemoteDataSource
 import com.parser.moviedb.data.remote.datasources.interfaces.MovieRemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -23,4 +26,8 @@ object DataSourceModule {
     @Singleton
     @Provides
     fun provideApiConfigurationRemoteDataSource(configurationApi: ConfigurationApi): ApiConfigurationRemoteDataSource = ApiConfigurationDataSource(configurationApi)
+
+    @Singleton
+    @Provides
+    fun provideMovieGenresRemoteDataSource(movieGenresApi: MovieGenresApi): MovieGenresRemoteDataSource = MovieGenresDataSource(movieGenresApi)
 }

@@ -2,6 +2,7 @@ package com.parser.moviedb.domain.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.io.File.separator
 
 @Parcelize
 data class MediaItem(
@@ -10,7 +11,7 @@ data class MediaItem(
     val adult: Boolean,
     val overview: String,
     val releaseDate: String,
-    val genreIds: List<Int>,
+    val genres: List<MovieGenre>,
     val originalTitle: String,
     val originalLanguage: String,
     val title: String,
@@ -27,7 +28,7 @@ data class MediaItem(
             adult = false,
             overview = "",
             releaseDate = "",
-            genreIds = emptyList(),
+            genres = emptyList(),
             originalTitle = "",
             originalLanguage = "",
             title = "",
@@ -37,5 +38,17 @@ data class MediaItem(
             video = false,
             voteAverage = 0f
         )
+    }
+
+    fun genresFormatted(): String {
+        return genres.joinToString(separator = " * ") { it.name }
+    }
+
+    fun yearRelease(): String {
+        return releaseDate.substring(0, releaseDate.indexOf("-"))
+    }
+
+    fun voteAverageFormatted(): String {
+        return "%.1f".format(voteAverage)
     }
 }

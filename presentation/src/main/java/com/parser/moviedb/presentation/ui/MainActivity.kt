@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                         },
                         R.id.root,
                         MovieDetailFragment.TAG,
-                        false
+                        true
                     )
                 }
             }

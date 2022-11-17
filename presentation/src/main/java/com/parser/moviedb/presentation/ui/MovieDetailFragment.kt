@@ -26,7 +26,15 @@ class MovieDetailFragment : BaseFragment() {
         (arguments?.getParcelable(MEDIA_ITEM) as? MediaItem)?.let {
             mediaItem = it
         }
+        binding.mediaItem = mediaItem
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.clBackTouchArea.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 
     companion object {

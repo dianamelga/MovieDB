@@ -1,17 +1,19 @@
 package com.parser.moviedb.domain.utils
 
+import com.parser.moviedb.data.remote.models.GenreItemResponse
 import com.parser.moviedb.data.remote.models.MediaItemResponse
 import com.parser.moviedb.data.remote.models.PagedItemsResponse
 import com.parser.moviedb.domain.entities.MediaItem
+import com.parser.moviedb.domain.entities.MovieGenre
 import com.parser.moviedb.domain.entities.PagedItems
 
-fun MediaItemResponse.toDomain(imageBaseUrl: String?) = MediaItem(
+fun MediaItemResponse.toDomain(imageBaseUrl: String?, genres: List<MovieGenre>) = MediaItem(
     id = id,
     posterUrl = "${imageBaseUrl}original/${posterPath}",
     adult = adult,
     overview = overview,
     releaseDate = releaseDate,
-    genreIds = genreIds,
+    genres = genres.filter { genreIds.contains(it.id) },
     originalTitle = originalTitle,
     originalLanguage = originalLanguage,
     title = title,
@@ -22,9 +24,14 @@ fun MediaItemResponse.toDomain(imageBaseUrl: String?) = MediaItem(
     voteAverage = voteAverage
 )
 
-fun PagedItemsResponse.toDomain(imageBaseUrl: String?) = PagedItems(
+fun PagedItemsResponse.toDomain(imageBaseUrl: String?, genres: List<MovieGenre>) = PagedItems(
     page = page,
-    results = results.map { it.toDomain(imageBaseUrl) },
+    results = results.map { it.toDomain(imageBaseUrl, genres) },
     totalResults = totalResults,
     totalPages = totalPages
+)
+
+fun GenreItemResponse.toDomain() = MovieGenre(
+    id = id,
+    name = name
 )

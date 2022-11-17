@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,8 +10,7 @@
             type="com.parser.moviedb.domain.entities.MediaItem" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.MovieDetailFragment"
@@ -27,13 +28,55 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_442px"
+            android:src="@drawable/background_gradient_up"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_681px"
+            android:src="@drawable/background_gradient_down"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_back_touch_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="@dimen/dp_27px"
+            android:paddingEnd="@dimen/dp_27px"
+            android:paddingTop="@dimen/dp_38px"
+            android:paddingBottom="@dimen/dp_38px"
+            android:clickable="true"
+            android:focusable="true"
+            >
+
+            <ImageView
+                android:id="@+id/iv_back_arrow"
+                android:layout_width="@dimen/dp_18px"
+                android:layout_height="@dimen/dp_11px"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/arrow_back"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="1.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -52,35 +95,88 @@
                     style="@style/poppins_semibold"
                     android:textSize="@dimen/sp_40px" />
 
-
                 <include
                     android:id="@+id/incl_year_release"
                     layout="@layout/square_view"
-                    android:layout_height="@dimend/dp_28px"
+                    android:layout_height="@dimen/dp_28px"
                     android:layout_width="@dimen/dp_42px"
+                    app:info="@{mediaItem.yearRelease}"
+                    app:showStar="@{false}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
-                    android:layout_marginTop="@dimen/dp_16px"/>
+                    app:layout_constraintEnd_toStartOf="@id/incl_language"
+                    android:layout_marginTop="@dimen/dp_16px"
+                    app:layout_constraintHorizontal_chainStyle="packed" />
 
                 <include
                     android:id="@+id/incl_language"
                     layout="@layout/square_view"
-                    android:layout_height="@dimend/dp_28px"
+                    android:layout_height="@dimen/dp_28px"
                     android:layout_width="@dimen/dp_32px"
+                    app:info="@{mediaItem.originalLanguage}"
+                    app:showStar="@{false}"
                     app:layout_constraintStart_toEndOf="@id/incl_year_release"
+                    app:layout_constraintEnd_toStartOf="@id/incl_rate"
                     android:layout_marginStart="@dimen/dp_8px"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
-                    android:layout_marginTop="@dimen/dp_16px"/>
+                    android:layout_marginTop="@dimen/dp_16px" />
 
                 <include
                     android:id="@+id/incl_rate"
                     layout="@layout/square_view"
-                    android:layout_height="@dimend/dp_28px"
+                    android:layout_height="@dimen/dp_28px"
                     android:layout_width="@dimen/dp_58px"
+                    app:info="@{mediaItem.voteAverageFormatted}"
+                    app:showStar="@{true}"
                     app:layout_constraintStart_toEndOf="@id/incl_language"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/dp_8px"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
-                    android:layout_marginTop="@dimen/dp_16px"/>
+                    android:layout_marginTop="@dimen/dp_16px" />
+
+                <TextView
+                    android:id="@+id/tv_genres"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/incl_year_release"
+                    android:layout_marginTop="@dimen/dp_17px"
+                    android:layout_marginHorizontal="@dimen/dp_24px"
+                    tools:text="Heartfelt - Romance - Sci-fi - Drama"
+                    android:text="@{mediaItem.genresFormatted}"
+                    style="@style/poppins_regular"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:textSize="@dimen/sp_12px" />
+
+                <Button
+                    android:id="@+id/btn_watch_trailer"
+                    android:layout_width="@dimen/dp_327px"
+                    android:layout_height="@dimen/dp_46px"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_genres"
+                    android:layout_marginTop="@dimen/dp_31px"
+                    android:text="@string/watch_trailer"
+                    style="@style/transparent_button" />
+
+
+                <TextView
+                    android:id="@+id/tv_overview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_watch_trailer"
+                    android:layout_marginTop="@dimen/dp_31px"
+                    android:layout_marginHorizontal="@dimen/dp_24px"
+                    android:text="@{mediaItem.overview}"
+                    tools:text="@string/fake_text"
+                    style="@style/poppins_regular"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_12px" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -3,4 +3,6 @@
     <string name="upcoming">Upcoming</string>
     <string name="top_rated">Top rated</string>
     <string name="recommended">Recommended for you</string>
+    <string name="watch_trailer">Watch trailer</string>
+    <string name="fake_text">MOVIE PLOT\nIn a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.</string>
 </resources>
