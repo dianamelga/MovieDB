@@ -41,7 +41,7 @@ data class MediaItem(
     }
 
     fun genresFormatted(): String {
-        return genres.joinToString(separator = " * ") { it.name }
+        return genres.joinToString(separator = " • ") { it.name }
     }
 
     fun yearRelease(): String {
