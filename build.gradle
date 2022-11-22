@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.google.gms:google-services:4.3.14'
         classpath 'com.android.tools.build:gradle:7.2.2'
-        classpath "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.44.2"
     }
 
 
@@ -21,8 +21,8 @@ buildscript {
     ext.target_sdk_version = 32
 
     ext.google_services = "4.3.10"
-    ext.hilt_version = "2.41"
-    ext.hilt_compiler_version = "2.38.1"
+    ext.hilt_version = "2.44.2"
+    ext.hilt_compiler_version = "2.44.2"
     ext.lifecycle_runtime_version = "2.5.1"
     ext.picasso_version = "2.71828"
     ext.picasso_transformation_version = "2.4.0"
@@ -60,7 +60,6 @@ buildscript {
     ext.arch_core_testing_version = "2.1.0"
     ext.work_hilt_version = "1.0.0"
     ext.blur_dialog_version = "2.2.0"
-    ext.hilt_compiler_version = "2.38.1"
     ext.amplify = "1.37.3"
     ext.desugar_jdk_libs = "1.1.5"
     ext.jwtdecode = "2.0.1"
@@ -68,6 +67,8 @@ buildscript {
     ext.capacitor_js_core_version = "3.4.1"
     ext.capacitor_js_filesystem_version = "1.1.0"
     ext.lindera_version = "0.7.1-3d_alpha22"
+    ext.robolectric_version = "4.9"
+    ext.mockwebserver_version = "4.10.0"
 }
 
 plugins {

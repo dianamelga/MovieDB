@@ -6,5 +6,6 @@ El propósito es que al momento de tener que modificar algun detalle, no sean ne
 Un código limpio o de calidad debe ser fácil de entender o intuir sin necesidad de muchos comentarios/documentaciones adicionales, debe ser fácil de mantener para cualquier miembro del equipo.
 
 3. Detalla cómo harías todo aquello que no hayas llegado a completar.
-Para los unit tests, creo que lo que realmente podriamos testear serian los useCases, esto sería, las llamadas a los apis, pero como android solo nos permite simular un mock server y no hacer las api calls de verdad, tengo que escribir manualmente los requests y responses que espero.
-No los agregue porque estaba teniendo un error sobre clases "duplicadas en gradle", que creo son realmente por compatibilidad entre las versiones de las librerias de testing y hilt, que me estaba llevando tiempo solucionar, entonces para no tardar demasiado decidi enviar el challenge sin eso.
+Actualizado: Para los tests, cree el MovieUseCaseTest que ya involucra a todas las demás capas (repository, datasources, apis).
+
+Algo que faltó fué reproducir el video correcto de youtube para cada película, pero probé varios de los ids que recibimos del api, y ya no estaban disponibles, por eso deje hardcoded solo el de avatar en VideoPlayerActivity para comprobar que la implementacion del youtube API funciona.
