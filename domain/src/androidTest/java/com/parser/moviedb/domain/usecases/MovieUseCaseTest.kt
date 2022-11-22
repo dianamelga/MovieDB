@@ -50,7 +50,7 @@ class MovieUseCaseTest {
     @Test
     fun getTopRatedMovies() {
         runBlocking {
-            val response = movieUseCase.getUpcomingMovies()
+            val response = movieUseCase.getTopRatedMovies()
             val hasPosterUrlPopulated = (response.getOrNull()?.results?.map { it.posterUrl != null }?.size ?: 0) > 0
             val hasGenresPopulated = (response.getOrNull()?.results?.map { it.genres.isNotEmpty() }?.size ?: 0) > 0
             assert(response.isSuccess && hasPosterUrlPopulated && hasGenresPopulated)
@@ -60,10 +60,19 @@ class MovieUseCaseTest {
     @Test
     fun getRecommendedMovies() {
         runBlocking {
-            val response = movieUseCase.getUpcomingMovies()
+            val response = movieUseCase.getRecommendedMovies()
+            val responseFilterBySpanish = movieUseCase.getRecommendedMovies(language = "es")
+            val responseFilterBy1993 = movieUseCase.getRecommendedMovies(yearOfRelease = 1993)
+
             val hasPosterUrlPopulated = (response.getOrNull()?.results?.map { it.posterUrl != null }?.size ?: 0) > 0
             val hasGenresPopulated = (response.getOrNull()?.results?.map { it.genres.isNotEmpty() }?.size ?: 0) > 0
-            assert(response.isSuccess && hasPosterUrlPopulated && hasGenresPopulated)
+            val spanishFilterWorks = responseFilterBySpanish.isSuccess && responseFilterBySpanish.getOrNull()?.results?.isNotEmpty() == true
+            val yearReleaseFilterWorks = responseFilterBy1993.isSuccess && responseFilterBy1993.getOrNull()?.results?.map { it.yearRelease() == "1993" }?.isNotEmpty() == true
+
+            assert(
+                response.isSuccess && hasPosterUrlPopulated && hasGenresPopulated &&
+                spanishFilterWorks && yearReleaseFilterWorks
+            )
         }
     }
 
