@@ -9,7 +9,9 @@ Support: Android 9 (API level 28) and above
 * [Youtube API](https://developers.google.com/youtube/android/player?hl=es) // Video player
 * [Retrofit](https://square.github.io/retrofit/) // Networking
 * [Lottie](https://github.com/airbnb/lottie-android) // Animations
-* [Glide](https://github.com/bumptech/glide) //Image handler
+* [Glide](https://github.com/bumptech/glide) // Image handler
+* [Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=es-419) // Dependency Injection
+* [Hilt testing & Robolectric](https://dagger.dev/hilt/testing) // Instrumental tests
 
 ### Interview Questions:
 * [Q&A in spanish](https://github.com/dianamelga/MovieDB/blob/main/readme.txt)
@@ -29,9 +31,4 @@ Support: Android 9 (API level 28) and above
 
  ***Ease of amending or adding a feature***
 High. Side effects are restrained and since every part of the architecture has a well defined purpose, adding a feature is only a matter of creating a new isolated use case and plug it where needed.
-
-
-### ToDos
-
- - Write Functional/Instrumental/UI Tests
 
